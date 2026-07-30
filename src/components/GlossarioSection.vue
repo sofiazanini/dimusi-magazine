@@ -5,8 +5,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-/* Glossario — sostituisci le definizioni placeholder e i colori con   */
-/* la palette definitiva di Dimusi                                    */
 const glossaryTerms = [
   { term: 'Zidrisa',    def: 'Melodia breve e ossessiva che riattiva ricordi profondi.', bg: '#111111', color: '#FFFFFF' },
   { term: 'Kesond',     def: 'Il mix di emozioni provate durante l\'ascolto di una zidrisa.', bg: '#F2C14E', color: '#111111' },
@@ -21,26 +19,24 @@ const glossaryTrackEl = ref(null)
 
 let scrollTriggers = []
 
-/* ------------------------------------------------------------------ */
-/* Glossario: sezione pinnata, 6 pannelli in fila orizzontale che     */
-/* scorrono uno dopo l'altro mentre scrolli in verticale (equivalente */
-/* del meccanismo "a capitoli" di tutorial073)                        */
-/* ------------------------------------------------------------------ */
 function initGlossaryScroll() {
-  const panels = glossaryTrackEl.value.children
-  const total = panels.length
+  const track = glossaryTrackEl.value
+  
+  // Calcoliamo esattamente quanto deve scorrere in base alla larghezza reale della traccia
+  const getScrollAmount = () => -(track.scrollWidth - window.innerWidth)
 
   const st = ScrollTrigger.create({
     trigger: glossaryWrapEl.value,
     start: 'top top',
-    end: () => `+=${total * window.innerHeight}`,
+    // Sostituiamo il calcolo approssimativo con la larghezza reale in pixel
+    end: () => `+=${track.scrollWidth - window.innerWidth}`,
     pin: true,
-    scrub: 0.6,
+    scrub: 1, // Leggermente aumentato per dare fluidità ed evitare micro-scatti
     anticipatePin: 1,
     invalidateOnRefresh: true,
     onUpdate: (self) => {
-      gsap.set(glossaryTrackEl.value, {
-        xPercent: -100 * (total - 1) * self.progress
+      gsap.set(track, {
+        x: getScrollAmount() * self.progress
       })
     }
   })
@@ -49,7 +45,6 @@ function initGlossaryScroll() {
 
 onMounted(async () => {
   if (document.fonts?.ready) await document.fonts.ready
-
   initGlossaryScroll()
 })
 
@@ -60,9 +55,9 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <!-- GLOSSARIO — pannelli orizzontali a scorrimento, sfondo/parola cambiano -->
   <section ref="glossaryWrapEl" class="relative w-full h-screen overflow-hidden">
-    <div ref="glossaryTrackEl" class="flex h-full" style="width: 600%;">
+    <!-- Rimuoviamo style="width: 600%;" e usiamo w-max per farlo adattare dinamicamente senza errori di arrotondamento -->
+    <div ref="glossaryTrackEl" class="flex h-full w-max">
       <div
         v-for="(item, i) in glossaryTerms"
         :key="item.term"
@@ -78,7 +73,6 @@ onBeforeUnmount(() => {
         <p class="font-sans text-base md:text-xl max-w-md mt-6 opacity-90">
           {{ item.def }}
         </p>
-        <!-- qui in seguito inserirai il poster dedicato al termine -->
       </div>
     </div>
   </section>
