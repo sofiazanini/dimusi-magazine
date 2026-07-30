@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans&family=Space+Grotesk:wght@300&display=swap');
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Vixa';
+  src: url('./assets/fonts/Vixa-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Clash Display';
+  src: url('./assets/fonts/ClashDisplay-Variable.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+.font-clash {
+  font-family: 'Clash Display', sans-serif;
+  font-weight: 500;
+}
+
+.font-vixa {
+  font-family: 'Vixa', sans-serif;
+}
+
+.font-space {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 300;
+}
+
+.font-pixel {
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 400;
+}
+
+.line {
+  overflow: visible !important;
+  padding-top: 0.1em !important;
+  margin-top: -0.1em !important;
+}
