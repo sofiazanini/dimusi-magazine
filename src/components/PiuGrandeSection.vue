@@ -123,24 +123,24 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <section ref="sectionEl" class="relative w-auto h-screen bg-black text-white overflow-hidden">
+    <section ref="sectionEl" class="relative w-auto h-screen bg-black text-white overflow-hidden uppercase">
         
         <div ref="containerEl" class="flex h-screen items-center">
             
             <!-- SCHERMATA 1 & 2 -->
             <div class="w-screen h-screen flex flex-col justify-center px-16 md:px-24 gap-6 shrink-0">
                 <div class="flex items-baseline gap-4">
-                    <h2 ref="okEl" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
+                    <h2 ref="okEl" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
                         Ok ma
                     </h2>
-                    <span ref="dotsEl" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)] tracking-widest">
+                    <span ref="dotsEl" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)] tracking-widest">
                         .............
                     </span>
                 </div>
-                <h2 ref="text1El" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
+                <h2 ref="text1El" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
                     Come possiamo rimettere al centro la musica?
                 </h2>
-                <h2 ref="text2El" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)] pt-6">
+                <h2 ref="text2El" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)] pt-6">
                     Serve qualcosa di grande
                 </h2>
             </div>
@@ -148,7 +148,7 @@ onBeforeUnmount(() => {
             <!-- SCHERMATA 3 (Il testo gigante con animazione) -->
             <!-- Usiamo un div flex per centrare e diamo una classe per la grandezza del testo -->
             <div class="w-auto h-screen flex items-center justify-center shrink-0">
-                <h3 ref="marqueeTrackEl" class="font-clash uppercase font-bold tracking-wide text-[clamp(7rem,25vw,28rem)] leading-[1.1]">
+                <h3 ref="marqueeTrackEl" class="font-clash tracking-wide text-[clamp(7rem,25vw,28rem)] leading-[1.1]">
                     PIÙ GRANDE
                 </h3>
             </div>
@@ -156,13 +156,13 @@ onBeforeUnmount(() => {
             <!-- SCHERMATA 4 -->
             <div class="w-screen h-screen flex flex-col justify-between py-24 px-16 md:px-24 shrink-0">
                 <div class="flex flex-col justify-center">
-                    <h2 ref="text3El" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
+                    <h2 ref="text3El" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
                         Come una divinità, loro sono immense
                     </h2>
                 </div>
                 
                 <div class="flex flex-col justify-center">
-                    <h2 ref="text4El" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
+                    <h2 ref="text4El" class="font-clash leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
                         Anche la musica è immensa, anche la musica può essere divina
                     </h2>
                 </div>

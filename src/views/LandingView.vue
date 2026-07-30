@@ -8,6 +8,7 @@ import landingVideo from '../assets/landing-video-effects.mp4'
 import PreGlossarioSection from '../components/PreGlossarioSection.vue'
 import GlossarioSection from '../components/GlossarioSection.vue'
 import PiuGrandeSection from '../components/PiuGrandeSection.vue'
+import PrimoVolumeSection from '../components/PrimoVolumeSection.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 </script>
@@ -47,6 +48,7 @@ gsap.registerPlugin(ScrollTrigger)
   <!-- SEZIONE 5 -->
   <PiuGrandeSection />
 
-
+  <!-- SEZIONE 6 -->
+  <PrimoVolumeSection />
 
 </template>
