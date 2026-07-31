@@ -9,6 +9,7 @@ import PreGlossarioSection from '../components/PreGlossarioSection.vue'
 import GlossarioSection from '../components/GlossarioSection.vue'
 import PiuGrandeSection from '../components/PiuGrandeSection.vue'
 import PrimoVolumeSection from '../components/PrimoVolumeSection.vue'
+import SocialSection from '../components/SocialSection.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 </script>
@@ -50,5 +51,8 @@ gsap.registerPlugin(ScrollTrigger)
 
   <!-- SEZIONE 6 -->
   <PrimoVolumeSection />
+
+  <!-- SEZIONE 7 -->
+  <SocialSection />
 
 </template>

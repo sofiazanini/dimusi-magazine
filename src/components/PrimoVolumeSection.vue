@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
                     <img ref="logoEl" src="/logo-dimusi.svg" alt="Dimusi" class="w-1 md:w-1/2" />
                     
                     <p ref="paragraphEl" class="font-clash text-lg md:text-2xl leading-relaxed opacity-80 max-w-xl mt-4">
-                        Per trovare questo senso di immensità nella musica.
+                        Per trovare questo senso di immensità nella musica contemporanea.
                     </p>
                 </div>
                 
@@ -144,25 +144,25 @@ onBeforeUnmount(() => {
                     <!-- Colonna Sinistra: Testi (Volume Title + Lista) -->
                     <div class="flex flex-col gap-6">
                         <h2 ref="volumeTitleEl" class="font-clash uppercase leading-[0.95] text-[clamp(2rem,4.5vw,5rem)]">
-                            Nel primo volume ci soffermiamo su apollineo e il dionisiaco
+                            Nel primo volume ci soffermiamo su apollineo e dionisiaco
                         </h2>
                         
                         <div class="flex flex-col gap-3">
-                            <p class="font-space text-sm md:text-base uppercase opacity-60">
+                            <p class="font-clash text-sm md:text-base uppercase opacity-60">
                                 All'interno troverai:
                             </p>
                             <ul ref="listEl" class="flex flex-col gap-2 font-space text-lg md:text-xl leading-snug">
-                                <li>- Come i dodici concetti dialogano con la musica</li>
+                                <li>- Come i due concetti dialogano con la musica</li>
                                 <li>- Chi sono Apollo e Dioniso</li>
-                                <li>- Gli artisti contemporanei che riflettono questo contrasto</li>
-                                <li>- Approfondimenti intensi, e molto altro</li>
+                                <li>- Gli artisti contemporanei che rispecchiano il tema</li>
+                                <li>- Approfondimenti, interviste, e tanto altro!</li>
                             </ul>
                         </div>
                     </div>
 
                     <!-- Colonna Destra: Reveal Copertina Volume 1 -->
                     <div class="flex justify-center items-center">
-                        <img ref="coverEl" :src="coverVolume1Img" alt="Copertina Volume 1 - Dove il velo si lacera" class="h-[70vh] w-auto object-fit shadow-2xl" />
+                        <img ref="coverEl" :src="coverVolume1Img" alt="Copertina Volume 1 - Dove il velo si lacera" class="h-[70vh] w-auto object-fit shadow-2xl rounded-2xl" />
                     </div>
 
                 </div>
