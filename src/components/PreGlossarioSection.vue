@@ -105,7 +105,7 @@ onBeforeUnmount(() => {
             <!-- Paragrafo in alto -->
             <div class="w-full flex justify-end pointer-events-auto">
                 <div ref="paragraphEl" class="w-full md:w-1/2 text-lg md:text-xl leading-relaxed text-[#d9d9d9] pl-0 md:pl-12">
-                    Elit id eiusmod deserunt ipsum esse aute sunt aliquip tempor non laborum adipisicing est minim. Et eiusmod qui id aliqua duis qui consectetur dolore nisi enim quis id officia esse. Commodo nisi sint ea aute culpa id reprehenderit adipisicing. Excepteur ullamco excepteur occaecat cupidatat ullamco mollit esse fugiat eu anim fugiat ullamco ullamco. Elit id eiusmod deserunt ipsum esse aute sunt aliquip tempor non laborum adipisicing est minim. Et eiusmod qui id aliqua duis qui consectetur dolore nisi enim quis id officia esse. Commodo nisi sint ea aute culpa id reprehenderit adipisicing. Excepteur ullamco excepteur occaecat cupidatat ullamco mollit esse fugiat eu anim fugiat ullamco ullamco.
+                    Questa rivista non recensisce dischi. Non stila classifiche, non insegue le uscite della settimana. Prova a fare qualcosa di più scomodo: guardare cosa succede nel corpo e nella testa di chi ascolta quando la musica smette di essere sfondo e diventa esperienza. Dimusi nasce da li. Non da un metodo, da un'ossessione. Dalla domanda che mi faccio da anni ogni volta che una canzone mi colpisce più del previsto: perché proprio questa, perché proprio ora, cosa sta succedendo davvero mentre ascolto. Cosa succede nel momento esatto in cui la forma non basta più a contenere quello che stiamo provando?
                 </div>
             </div>
             
