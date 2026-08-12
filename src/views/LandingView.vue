@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -12,47 +12,100 @@ import PrimoVolumeSection from '../components/PrimoVolumeSection.vue'
 import SocialSection from '../components/SocialSection.vue'
 
 gsap.registerPlugin(ScrollTrigger)
+
+const heroSection = ref(null)
+const heroVideoContainer = ref(null)
+const logoHeader = ref(null)
+const scrollIndicator = ref(null)
+
+onMounted(() => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: heroSection.value,
+      start: 'top top',
+      end: '+=3500', 
+      scrub: true,
+      pin: true,
+      anticipatePin: 1,
+      invalidateOnRefresh: true
+    }
+  })
+
+  // Misura l'altezza REALE del logo a larghezza piena (cambia da schermo a schermo)
+  const getRemainingHeight = () => {
+    const logoH = logoHeader.value.offsetHeight
+    const topGap = 16
+    const bottomGap = window.innerHeight * 0.03
+    const innerGap = 16
+    return window.innerHeight - logoH - topGap - bottomGap - innerGap
+  }
+
+  tl.fromTo(
+    heroVideoContainer.value,
+    { width: '50vw', height: '40vh', borderRadius: '2rem', bottom: '30vh' },
+    { width: '98vw', height: '98vh', borderRadius: '2rem', bottom: '3vh', ease: 'none', duration: 1 }
+  )
+  .to(scrollIndicator.value, { opacity: 0, duration: 0.1 }, 0)
+
+  .to(
+    heroVideoContainer.value,
+    {
+      width: '98vw',
+      height: () => `${getRemainingHeight()}px`,
+      borderRadius: '2rem',
+      ease: 'power1.inOut',
+      duration: 1
+    }
+  )
+
+  .to(logoHeader.value, { opacity: 1, y: 0, duration: 1 }, '-=0.5')
+})
 </script>
 
 <template>
-  <!-- HERO SECTION -->
-  <section class="w-screen h-screen max-h-screen flex flex-col justify-between items-center p-4 md:p-6 overflow-hidden bg-white">
-    <div class="w-full flex justify-center">
-      <img
-        src="/logo-dimusi.svg"
-        alt="Dimusi Magazine"
-        class="w-full object-contain object-top"
-      />
-    </div>
+  <!-- HERO SECTION CON SFONDO BIANCO -->
+  <section ref="heroSection" id="hero-section" class="relative w-screen h-screen overflow-hidden bg-white">
+    
+<!-- Logo: torna a larghezza piena, altezza libera secondo il suo aspect ratio -->
+<div 
+  ref="logoHeader" 
+  class="absolute top-4 left-0 w-full z-30 opacity-0 transform -translate-y-4 flex justify-center items-center px-4 pointer-events-none"
+>
+  <img
+    src="/logo-dimusi.svg"
+    alt="Dimusi Magazine"
+    class="w-full object-contain object-top"
+  />
+</div>
+  
+  <!-- Cornice del Video: ancorata in basso (absolute bottom-0), gestisce la forma e l'animazione -->
+  <div 
+  ref="heroVideoContainer" 
+  class="absolute bottom-0 left-1/2 -translate-x-1/2 overflow-hidden z-10 w-full h-auto rounded-xl"
+  >
+  <video
+  :src="landingVideo"
+  autoplay
+  muted
+  loop
+  playsinline
+  class="w-full h-full object-cover"
+  ></video>
+</div>
 
-    <div class="w-full flex-1 min-h-0 flex justify-center items-center my-2">
-      <video
-        :src="landingVideo"
-        autoplay
-        muted
-        loop
-        playsinline
-        class="w-full h-full object-cover rounded-xl"
-      ></video>
-    </div>
-  </section>
+<!-- Indicatore di scroll iniziale -->
+<div ref="scrollIndicator" class="absolute bottom-6 w-full flex justify-center z-20 text-zinc-600 font-mono text-xs tracking-widest uppercase">
+  [ scorri per lacerare il velo ]
+</div>
+</section>
 
-  <!-- SEZIONE 2 -->
+<!-- SEZIONI SUCCESSIVE (Scorrono sotto la cornice video) -->
+<div class="relative z-20 bg-white">
   <ConceptSection />
-
-  <!-- SEZIONE 3 -->
   <PreGlossarioSection />
-
-  <!-- SEZIONE 4 -->
   <GlossarioSection />
-
-  <!-- SEZIONE 5 -->
   <PiuGrandeSection />
-
-  <!-- SEZIONE 6 -->
   <PrimoVolumeSection />
-
-  <!-- SEZIONE 7 -->
   <SocialSection />
-
+</div>
 </template>
