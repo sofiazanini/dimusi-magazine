@@ -4,8 +4,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
 
-import landingVideo from '../assets/landing-video-effects.mp4'
-
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
 const section2El = ref(null)
@@ -33,12 +31,12 @@ const initSplit = () => {
           toggleActions: 'play none none reverse'
         }
       })  
-
+      
       // stato di partenza: forziamo il colore grigio iniziale su tutti i caratteri generati
       gsap.set(self.chars, { color: '#d9d9d9' })
-
+      
       // testo colorato allo scroll
-
+      
       const colorFill = gsap.to(self.chars, {
         color: '#F2C14E', 
         ease: 'none',
@@ -53,7 +51,7 @@ const initSplit = () => {
           invalidateOnRefresh: true
         }
       })
-
+      
       // SplitText farà il revert/kill automatico di queste animazioni al prossimo resize
       return [entrance, colorFill]
     }
@@ -74,16 +72,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section
-    ref="section2El"
-    class="relative w-full min-h-screen flex flex-col justify-center px-6 md:px-16 py-24"
-  >
-    <h2 class="font-clash uppercase font-bold text-[clamp(2rem,6.5vw,7rem)]">
+  <section ref="section2El" class="relative w-full min-h-screen flex flex-col justify-center px-6 md:px-16 py-24">
+    <h2 class="font-pixel uppercase font-bold text-[clamp(2rem,6.5vw,7rem)]">
       Cos'è?
     </h2>
-
+    
     <h2 ref="textEl" class="font-clash uppercase font-bold leading-[0.92] text-[clamp(2rem,6.5vw,7rem)]">
-        Dimusi è la ricerca del divino nell'ascolto contemporaneo
+      Dimusi è la ricerca del divino nell'ascolto contemporaneo
     </h2>
   </section>
 </template>
