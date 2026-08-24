@@ -1,28 +1,27 @@
 <template>
-  <!-- 1. BARRA MOBILE: visibile SOLO su mobile e SOLO quando si scrolla verso l'alto (oppure a menu aperto) -->
+  <!-- 1. BARRA MOBILE -->
   <header 
-    class="md:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 pointer-events-none"
+    class="md:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 pointer-events-none border-b"
     :class="[
-      (isMobileVisible || isOpen) 
-        ? 'translate-y-0 opacity-100' 
-        : '-translate-y-full opacity-0',
-      isScrolled && !isOpen ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      (isScrollingUp || isOpen) 
+        ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
+        : '-translate-y-full opacity-0 bg-transparent border-transparent'
     ]"
   >
-    <!-- Logo piccolo: visibile solo a menu chiuso -->
+    <!-- Logo piccolo -->
     <router-link 
       to="/" 
       class="flex items-center transition-opacity duration-200"
-      :class="!isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
+      :class="(isScrollingUp && !isOpen) ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'"
     >
       <img src="/logo-dimusi.svg" alt="Dimusi Magazine" class="h-6 w-auto object-contain brightness-0" />
     </router-link>
 
-    <!-- Bottone mobile (compare solo con la barra) -->
+    <!-- Bottone mobile -->
     <button 
       @click="toggleMenu" 
       class="group flex flex-col justify-center items-end gap-1.5 w-7 h-7 cursor-pointer focus:outline-none"
-      :class="(isMobileVisible || isOpen) ? 'pointer-events-auto' : 'pointer-events-none'"
+      :class="(isScrollingUp || isOpen) ? 'pointer-events-auto' : 'pointer-events-none'"
       aria-label="Toggle Menu"
     >
       <span 
@@ -40,29 +39,30 @@
     </button>
   </header>
 
-  <!-- 2. NAVBAR DESKTOP: Hamburger fisso + Logo che compare solo in scroll -->
+  <!-- 2. NAVBAR DESKTOP -->
   <header 
     id="desktop-navbar"
-    class="hidden md:flex fixed top-0 left-0 w-full z-50 items-center justify-between px-10 transition-all duration-300 pointer-events-none"
+    class="hidden md:flex fixed top-0 left-0 w-full z-50 items-center justify-between px-10 py-4 transition-all duration-300 pointer-events-none border-b"
     :class="[
-      isScrolled && !isOpen ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-10'
+      (isScrollingUp || isOpen) 
+        ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
+        : '-translate-y-full opacity-0 bg-transparent border-transparent'
     ]"
   >
-    <!-- Logo desktop: compare solo quando si scrolla -->
+    <!-- Logo desktop -->
     <router-link 
       to="/" 
       class="flex items-center transition-all duration-200"
-      :class="isScrolled && !isOpen ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'"
+      :class="(isScrollingUp && !isOpen) ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 -translate-y-2 pointer-events-none'"
     >
       <img src="/logo-dimusi.svg" alt="Dimusi Magazine" class="h-7 w-auto object-contain brightness-0" />
     </router-link>
 
-    <div v-if="!isScrolled || isOpen" class="w-0"></div>
-
     <!-- Bottone Desktop -->
     <button 
       @click="toggleMenu" 
-      class="group flex flex-col justify-center items-end gap-1.5 w-8 h-8 cursor-pointer pointer-events-auto focus:outline-none"
+      class="group flex flex-col justify-center items-end gap-1.5 w-8 h-8 cursor-pointer focus:outline-none"
+      :class="(isScrollingUp || isOpen) ? 'pointer-events-auto' : 'pointer-events-none'"
       aria-label="Toggle Menu"
     >
       <span 
@@ -132,8 +132,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 
 const isOpen = ref(false)
-const isScrolled = ref(false)
-const isMobileVisible = ref(false)
+const isScrollingUp = ref(false)
 const isFirstItemHovered = ref(false)
 const navOverlay = ref(null)
 
@@ -146,18 +145,21 @@ const menuItems = [
 
 let tl = null
 let lastScrollY = 0
+let scrollTimeout = null
 
 const handleScroll = () => {
   const currentScrollY = window.scrollY
-  
-  isScrolled.value = currentScrollY > 50
 
-  // Mobile: visibile SOLO se scroll verso l'alto (e non in cima)
   if (currentScrollY > 80 && currentScrollY < lastScrollY) {
-    isMobileVisible.value = true
+    isScrollingUp.value = true
   } else {
-    isMobileVisible.value = false
+    isScrollingUp.value = false
   }
+
+  clearTimeout(scrollTimeout)
+  scrollTimeout = setTimeout(() => {
+    isScrollingUp.value = false
+  }, 250)
 
   lastScrollY = currentScrollY
 }
@@ -169,8 +171,9 @@ onMounted(() => {
 
 onUnmounted(() => {
   if (tl) tl.kill()
+  clearTimeout(scrollTimeout)
   window.removeEventListener('scroll', handleScroll)
-  document.body.style.overflow = '' 
+  document.body.style.overflow = ''
 })
 
 const toggleMenu = () => {

@@ -43,10 +43,7 @@
     </div>
   </header>
 
-  <section class="w-full h-100 bg-white text-black p-6 md:p-10">
-    <h2 class="text-2xl font-bold mb-4 font-pixel">Benvenuti su Dimusi Magazine</h2>
-    <p class="text-lg font-mono">Scopri l'ultima musica e la cultura italiana</p>
-  </section>
+  <StorytellingSection />
 </template>
 
 <script setup>
@@ -54,6 +51,7 @@ import gsap from 'gsap'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import landingVideo from '../assets/landing-video-effects.mp4'
 import Navbar from '../components/Navbar.vue'
+import StorytellingSection from '../components/StorytellingSection.vue'
 
 const clipProgress = ref(0)
 const imgScale = ref(1)
