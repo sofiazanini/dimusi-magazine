@@ -49,7 +49,7 @@
                 class="font-pixel text-3xl sm:text-4xl md:text-3xl leading-none tracking-tight transition-colors duration-150"
                 :class="[
                   item.textClass,
-                  touchedIndex === index ? '!text-white' : 'group-hover:!text-white group-active:!text-white'
+                  touchedIndex === index ? 'text-white!' : 'group-hover:text-white! group-active:text-white!'
                 ]"
               >
                 {{ item.label }}
@@ -108,7 +108,7 @@
 
 <script setup>
 import { ref, computed, nextTick, onMounted, onUnmounted } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import gsap from 'gsap'
 
 const props = defineProps({
@@ -118,7 +118,6 @@ const props = defineProps({
   }
 })
 
-const router = useRouter()
 const route = useRoute()
 
 const isOpen = ref(false)
@@ -130,32 +129,10 @@ const touchedIndex = ref(null)
 
 // 4 Voci collegate ai componenti dell'applicazione
 const menuItems = [
-  { 
-    label: 'HOME', 
-    path: '/', 
-    bgClass: 'bg-green-mag', 
-    textClass: 'text-green-mag' 
-  },
-  { 
-    label: 'GLOSSARIO', 
-    path: '/#glossario', // Scrolla alla sezione Glossario presente nella Landing
-    isScrollSection: true,
-    bgClass: 'bg-[#F59B45]', 
-    textClass: 'text-[#F59B45]' 
-  },
-  { 
-    label: 'MAGAZINE', 
-    path: '/magazine', 
-    isPending: true, // Segnaposto in attesa di creare la vista dedicata
-    bgClass: 'bg-red-mag', 
-    textClass: 'text-red-mag' 
-  },
-  { 
-    label: 'SOCIAL', 
-    path: '/social', // Collegato a ProfileView.vue nel router
-    bgClass: 'bg-[#36BDEE]', 
-    textClass: 'text-[#36BDEE]' 
-  }
+  { label: 'HOME', path: '/', bgClass: 'bg-green-mag', textClass: 'text-green-mag' },
+  { label: 'GLOSSARIO', path: '/#glossario', isScrollSection: true, bgClass: 'bg-[#F59B45]', textClass: 'text-[#F59B45]' },
+  { label: 'MAGAZINE', path: '/magazine', bgClass: 'bg-red-mag', textClass: 'text-red-mag' },
+  { label: 'SOCIAL', path: '/social', bgClass: 'bg-[#36BDEE]', textClass: 'text-[#36BDEE]' }
 ]
 
 let lastScrollY = 0
@@ -217,11 +194,6 @@ const handleNavigation = (item, index, event) => {
     if (glossarioElem) {
       glossarioElem.scrollIntoView({ behavior: 'smooth' })
     }
-  }
-
-  // Se la pagina magazine è ancora in lavorazione
-  if (item.isPending) {
-    // Lascia la navigazione o inserisci una gestione provvisoria
   }
 
   setTimeout(() => {
