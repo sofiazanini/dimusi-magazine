@@ -1,5 +1,5 @@
 <template>
-  <header id="header" class="w-full min-h-screen flex flex-col justify-between items-center box-border relative bg-white text-black px-6 pt-6 md:px-10 md:pt-10 overflow-x-hidden">
+  <header id="home" class="w-full min-h-screen flex flex-col justify-between items-center box-border relative bg-white text-black px-6 pt-6 md:px-10 md:pt-10 overflow-x-hidden">
     
     <Navbar />
       
@@ -44,6 +44,8 @@
   </header>
 
   <StorytellingSection />
+  <GlossarioSection />
+
 </template>
 
 <script setup>
@@ -52,6 +54,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import landingVideo from '../assets/landing-video-effects.mp4'
 import Navbar from '../components/Navbar.vue'
 import StorytellingSection from '../components/StorytellingSection.vue'
+import GlossarioSection from '../components/GlossarioSection.vue'
 
 const clipProgress = ref(0)
 const imgScale = ref(1)

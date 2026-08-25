@@ -11,7 +11,7 @@
             </div>
             
             <!-- Stage Centrale -->
-            <div class="relative w-full my-auto min-h-125 flex items-center justify-center perspective-[1000px]">
+            <div class="relative w-full my-auto min-h-130 flex items-center justify-center perspective-[1000px]">
                 
                 <!-- 01. MANIFESTO -->
                 <div ref="step1Ref" class="w-full max-w-6xl">
@@ -50,7 +50,7 @@
                     </div>
                 </div>
                 
-                <!-- 02. DOMANDA 02 -->
+                <!-- 03. DOMANDA 02 -->
                 <div ref="stepQ2Ref" class="w-full max-w-6xl absolute inset-0 flex flex-col justify-center items-end text-right opacity-0 pointer-events-none">
                     <span class="q2-bg-num absolute top-2 md:top-4 right-0 font-pixel text-9xl sm:text-8xl md:text-9xl lg:text-[180px] text-black/6 leading-none select-none pointer-events-none -z-10 translate-y-8">
                         02
@@ -76,6 +76,34 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- 04. DICHIARAZIONE: PARTE A (PARAGRAFI NARRATIVI) -->
+                <div ref="step3TextRef" class="w-full max-w-4xl absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none z-10">
+                    <div class="space-y-6 sm:space-y-8 text-base sm:text-xl md:text-2xl text-zinc-900 leading-relaxed font-clash">
+                        <p class="step3-p1">
+                            Questa rivista <span class="marker-highlight">non recensisce dischi</span>. Non stila classifiche, non insegue le uscite della settimana. Prova a fare qualcosa di più scomodo: guardare cosa succede nel corpo e nella testa di chi ascolta quando la musica smette di essere sfondo e <span class="marker-highlight">diventa esperienza</span>.
+                        </p>
+                        <p class="step3-p2">
+                            <span class="font-pixel text-red-mag tracking-tight text-2xl sm:text-3xl inline-block mr-1">Dimusi</span> nasce da lì. Non da un metodo, <span class="marker-highlight">da un'ossessione</span>. Dalla domanda che mi faccio da anni ogni volta che una canzone mi colpisce più del previsto: <em class="border-b-2 border-zinc-900 pb-1">perché proprio questa, perché proprio ora, cosa sta succedendo davvero mentre ascolto</em>. Cosa succede nel momento esatto in cui la forma non basta più a contenere quello che stiamo provando?
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 05. DICHIARAZIONE: PARTE B (GANCIO CONCLUSIVO BILANCIATO) -->
+                <div ref="step3LeadRef" class="w-full max-w-6xl absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none z-10">
+                    <div class="space-y-3 sm:space-y-6 w-full">
+                        <div class="overflow-hidden py-1">
+                            <p class="step3-lead-1 font-pixel text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-black leading-tight tracking-tight translate-y-full will-change-transform">
+                                «Dimusi prova a spiegarlo.»
+                            </p>
+                        </div>
+                        <div class="overflow-hidden py-1 pl-8 sm:pl-16 md:pl-24 lg:pl-32">
+                            <p class="step3-lead-2 font-pixel text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-green-mag leading-tight tracking-tight translate-y-full will-change-transform">
+                                Per questo è nato un nuovo linguaggio:
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 
             </div>
             
@@ -97,6 +125,8 @@ gsap.registerPlugin(ScrollTrigger)
 
 const sectionRef = ref(null), statusLabelRef = ref(null), footerLabelRef = ref(null), underlineSpanRef = ref(null)
 const step1Ref = ref(null), stepQ1Ref = ref(null), stepQ2Ref = ref(null)
+const step3TextRef = ref(null), step3LeadRef = ref(null)
+
 const baseWords = 'Dimusi è uno spazio editoriale e digitale dedicato alla'.split(' ')
 const highlightWords = 'ricerca del divino nella musica contemporanea.'.split(' ')
 
@@ -108,7 +138,7 @@ onMounted(() => {
             scrollTrigger: {
                 trigger: sectionRef.value,
                 start: 'top top',
-                end: '+=3800',
+                end: '+=6400',
                 pin: true,
                 scrub: 0.6,
                 anticipatePin: 1
@@ -146,7 +176,7 @@ onMounted(() => {
         }, '-=0.8')
         .to({}, { duration: 0.8 })
         
-        // Uscita Domanda 01
+        // Transizione -> Domanda 02
         .to(['.q1-tag', '.q1-row-1', '.q1-row-2'], {
             y: '-110%',
             stagger: 0.06,
@@ -167,6 +197,55 @@ onMounted(() => {
             ease: 'power3.out'
         }, '-=0.8')
         .to({}, { duration: 0.8 })
+
+        // Transizione -> Sezione 03 (Paragrafi Narrativi)
+        .to(['.q2-tag', '.q2-row-1', '.q2-row-2'], {
+            y: '-110%',
+            stagger: 0.06,
+            duration: 0.6,
+            ease: 'power3.in'
+        })
+        .to('.q2-bg-num', { opacity: 0, y: -30, duration: 0.4 }, '-=0.4')
+        .set(stepQ2Ref.value, { opacity: 0 })
+        .add(() => {
+            const isForward = tl.scrollTrigger ? tl.scrollTrigger.direction === 1 : true
+            if (isForward) {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 03 DICHIARAZIONE'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '03 / 03'
+            } else {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 02 INDAGINE'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '02 / 03'
+            }
+        })
+        .set(step3TextRef.value, { opacity: 1 })
+
+        // --- 4. PARAGRAFI CON EVIDENZIATORE GREEN-MAG ---
+        .fromTo(['.step3-p1', '.step3-p2'], 
+            { opacity: 0, y: 30 }, 
+            { opacity: 1, y: 0, stagger: 0.25, duration: 0.9, ease: 'power2.out' }
+        )
+        .to('.marker-highlight', {
+            backgroundPosition: '0% 0%',
+            color: '#ffffff',
+            stagger: 0.3,
+            duration: 1.1,
+            ease: 'power1.inOut'
+        })
+        .to({}, { duration: 1 }) // Pausa di lettura sui paragrafi
+
+        // Uscita Paragrafi -> Entrata Gancio Finale
+        .to(step3TextRef.value, { opacity: 0, y: -25, duration: 0.6, ease: 'power2.in' })
+        .set(step3TextRef.value, { display: 'none' })
+        .set(step3LeadRef.value, { opacity: 1 })
+
+        // --- 5. GANCIO CONCLUSIVO AL GLOSSARIO ---
+        .to(['.step3-lead-1', '.step3-lead-2'], {
+            y: '0%',
+            stagger: 0.2,
+            duration: 0.9,
+            ease: 'power3.out'
+        })
+        .to({}, { duration: 1.2 })
         
     }, sectionRef.value)
 })

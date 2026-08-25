@@ -3,7 +3,7 @@
 @font-face {
   font-family: 'Clash Display';
   src: url('./assets/fonts/ClashDisplay-Variable.woff2') format('woff2');
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -15,12 +15,18 @@
 
 .font-clash {
   font-family: 'Clash Display', sans-serif;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .font-space {
   font-family: "Space Mono", sans-serif;
-  font-weight: 300;
+  font-weight: 500; /* mobile */
+  word-spacing: 0.05em;
+}
+@media (min-width: 768px) {
+  .font-space {
+    font-weight: 300; /* desktop */
+  }
 }
 
 .font-pixel {
@@ -50,3 +56,39 @@
 .bg-red-mag {
   background-color: #BD252C;
 }
+
+
+
+
+/* testi colorati animati */
+.line-draw-black {
+  background-image: linear-gradient(to right, #000000, #000000);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 0% 2px;
+  padding-bottom: 2px;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.marker-highlight {
+  background-image: linear-gradient(to right, #7E968D 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0%;
+  padding: 0.1em 0.35em;
+  border-radius: 0.125rem;
+  transition: color 0.3s ease;
+  display: inline;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.marker-highlight.marker-blue {
+  background-image: linear-gradient(to right, #36BDEE 50%, transparent 50%);
+}
+.marker-highlight.marker-orange {
+  background-image: linear-gradient(to right, #F59B45 50%, transparent 50%);
+}
+
+
+
