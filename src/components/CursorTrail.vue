@@ -1,9 +1,9 @@
 <template>
     <div class="fixed inset-0 w-screen h-screen pointer-events-none z-35 overflow-hidden mix-blend-difference">
         <div class="absolute inset-0 w-full h-full">
-        <div ref="cursorInner" class="grid w-full h-full" :style="{ gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))` }"></div>
+            <div ref="cursorInner" class="grid w-full h-full" :style="{ gridTemplateColumns: `repeat(${columnsCount}, minmax(0, 1fr))` }"></div>
+        </div>
     </div>
-</div>
 </template>
 
 <script setup>
