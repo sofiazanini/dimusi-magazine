@@ -3,12 +3,14 @@
   <header 
     class="md:hidden fixed top-0 left-0 w-full z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 pointer-events-none border-b"
     :class="[
-      (isScrollingUp || isOpen) 
-        ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
-        : '-translate-y-full opacity-0 bg-transparent border-transparent'
+      isOpen 
+        ? 'translate-y-0 opacity-100 bg-transparent border-transparent' 
+        : (isScrollingUp 
+            ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
+            : '-translate-y-full opacity-0 bg-transparent border-transparent')
     ]"
   >
-    <!-- Logo piccolo -->
+    <!-- Logo piccolo: scompare a menu aperto -->
     <router-link 
       to="/" 
       class="flex items-center transition-opacity duration-200"
@@ -42,14 +44,18 @@
   <!-- 2. NAVBAR DESKTOP -->
   <header 
     id="desktop-navbar"
+    @mouseenter="handleHeaderEnter"
+    @mouseleave="handleHeaderLeave"
     class="hidden md:flex fixed top-0 left-0 w-full z-50 items-center justify-between px-10 py-4 transition-all duration-300 pointer-events-none border-b"
     :class="[
-      (isScrollingUp || isOpen) 
-        ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
-        : '-translate-y-full opacity-0 bg-transparent border-transparent'
+      isOpen 
+        ? 'translate-y-0 opacity-100 bg-transparent border-transparent' 
+        : (isScrollingUp 
+            ? 'translate-y-0 opacity-100 bg-white/90 backdrop-blur-md border-black' 
+            : '-translate-y-full opacity-0 bg-transparent border-transparent')
     ]"
   >
-    <!-- Logo desktop -->
+    <!-- Logo desktop: scompare a menu aperto -->
     <router-link 
       to="/" 
       class="flex items-center transition-all duration-200"
@@ -134,6 +140,7 @@ import gsap from 'gsap'
 const isOpen = ref(false)
 const isScrollingUp = ref(false)
 const isFirstItemHovered = ref(false)
+const isHeaderHovered = ref(false)
 const navOverlay = ref(null)
 
 const menuItems = [
@@ -147,21 +154,37 @@ let tl = null
 let lastScrollY = 0
 let scrollTimeout = null
 
+const startHideTimer = () => {
+  clearTimeout(scrollTimeout)
+  scrollTimeout = setTimeout(() => {
+    if (!isHeaderHovered.value) {
+      isScrollingUp.value = false
+    }
+  }, 1800)
+}
+
 const handleScroll = () => {
   const currentScrollY = window.scrollY
 
   if (currentScrollY > 80 && currentScrollY < lastScrollY) {
     isScrollingUp.value = true
-  } else {
+    startHideTimer()
+  } else if (currentScrollY > lastScrollY && !isHeaderHovered.value) {
     isScrollingUp.value = false
+    clearTimeout(scrollTimeout)
   }
 
-  clearTimeout(scrollTimeout)
-  scrollTimeout = setTimeout(() => {
-    isScrollingUp.value = false
-  }, 250)
-
   lastScrollY = currentScrollY
+}
+
+const handleHeaderEnter = () => {
+  isHeaderHovered.value = true
+  clearTimeout(scrollTimeout)
+}
+
+const handleHeaderLeave = () => {
+  isHeaderHovered.value = false
+  startHideTimer()
 }
 
 onMounted(() => {

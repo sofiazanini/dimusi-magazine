@@ -1,127 +1,222 @@
+<template>
+    <div class="relative w-full">
+        <section ref="sectionRef" class="relative w-full min-h-screen bg-transparent flex flex-col justify-between p-6 md:p-12 lg:p-16 z-20 select-none overflow-hidden">
+            <!-- Didascalia Superiore Fissa -->
+            <div class="flex items-center justify-between font-clash text-xs uppercase tracking-widest text-zinc-500 border-b border-black/10 pb-4 z-10">
+                <p class="flex items-center gap-3">
+                    <span class="w-2 h-2 bg-red-600 inline-block animate-pulse"></span>
+                    <span ref="statusLabelRef">// 01 MANIFESTO</span>
+                </p>
+                <p class="font-mono text-zinc-400 text-xs">// RESEARCH</p>
+            </div>
+            
+            <!-- Stage Centrale -->
+            <div class="relative w-full my-auto min-h-125 flex items-center justify-center perspective-[1000px]">
+                
+                <!-- 01. MANIFESTO -->
+                <div ref="step1Ref" class="w-full max-w-6xl">
+                    <p class="font-pixel text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight tracking-tight">
+                        <span v-for="(word, index) in baseWords" :key="'base-' + index" class="story-word-base inline-block mr-[0.25em] text-black opacity-15 will-change-transform">{{ word }}</span>
+                        <span ref="underlineSpanRef" class="inline bg-linear-to-r from-red-600 to-red-600 bg-no-repeat bg-bottom pb-1 bg-size-[0%_2px]">
+                            <span v-for="(word, index) in highlightWords" :key="'high-' + index" class="story-word-highlight inline-block mr-[0.25em] text-black opacity-15 will-change-transform">{{ word }}</span>
+                        </span>
+                    </p>
+                </div>
+                
+                <!-- 02. DOMANDA 01 -->
+                <div ref="stepQ1Ref" class="w-full max-w-6xl absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none">
+                    <span class="q1-bg-num absolute top-2 md:top-4 left-0 font-pixel text-9xl sm:text-8xl md:text-9xl lg:text-[180px] text-black/6 leading-none select-none pointer-events-none -z-10 translate-y-8">
+                        01
+                    </span>
+                    
+                    <div class="space-y-2 md:space-y-4 relative z-10">
+                        <div class="overflow-hidden">
+                            <p class="q1-tag font-mono text-xs sm:text-sm text-red-600 uppercase tracking-widest block translate-y-full">
+                                [ Q.01 — IL RUOLO DELL'ANIMA ]
+                            </p>
+                        </div>
+                        
+                        <div class="overflow-hidden">
+                            <p class="q1-row-1 font-pixel text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-black leading-none tracking-tight translate-y-full will-change-transform">
+                                «Può l'anima resistere
+                            </p>
+                        </div>
+                        
+                        <div class="overflow-hidden pl-8 sm:pl-16 md:pl-28">
+                            <p class="q1-row-2 font-pixel text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-red-600 leading-none tracking-tight translate-y-full will-change-transform">
+                                senza musica?»
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 02. DOMANDA 02 -->
+                <div ref="stepQ2Ref" class="w-full max-w-6xl absolute inset-0 flex flex-col justify-center items-end text-right opacity-0 pointer-events-none">
+                    <span class="q2-bg-num absolute top-2 md:top-4 right-0 font-pixel text-9xl sm:text-8xl md:text-9xl lg:text-[180px] text-black/6 leading-none select-none pointer-events-none -z-10 translate-y-8">
+                        02
+                    </span>
+                    
+                    <div class="space-y-2 md:space-y-4 max-w-4xl relative z-10">
+                        <div class="overflow-hidden">
+                            <p class="q2-tag font-mono text-xs sm:text-sm text-red-600 uppercase tracking-widest block translate-y-full">
+                                [ Q.02 — IL RUOLO DELL'ANIMA ]
+                            </p>
+                        </div>
+                        
+                        <div class="overflow-hidden">
+                            <p class="q2-row-1 font-pixel text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-black leading-none tracking-tight translate-y-full will-change-transform">
+                                «Cosa trasmette la musica
+                            </p>
+                        </div>
+                        
+                        <div class="overflow-hidden pr-4 sm:pr-12 pb-2">
+                            <p class="q2-row-2 font-pixel text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-black italic leading-none tracking-tight translate-y-full will-change-transform">
+                                <span class="inline-block border-b-2 border-red-600 pb-1">all'anima?»</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 03. SOLUZIONE -->
+                <div ref="step3Ref" class="w-full max-w-5xl absolute inset-0 flex flex-col justify-center opacity-0 pointer-events-none">
+                    <div class="space-y-6 md:space-y-8 text-left">
+                        <p class="step3-text font-clash text-lg sm:text-xl md:text-2xl lg:text-3xl text-black leading-relaxed tracking-tight">
+                            Questa rivista non recensisce dischi. Non stila classifiche, non insegue le uscite della settimana. Prova a fare qualcosa di più scomodo: guardare cosa succede nel corpo e nella testa di chi ascolta quando la musica smette di essere sfondo e diventa esperienza. Dimusi nasce da lì. Non da un metodo, da un'ossessione. Dalla domanda che mi faccio da anni ogni volta che una canzone mi colpisce più del previsto: perché proprio questa, perché proprio ora, cosa sta succedendo davvero mentre ascolto. Cosa succede nel momento esatto in cui la forma non basta più a contenere quello che stiamo provando?
+                        </p>
+
+                        <div class="pt-4 border-t border-black/10 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                            <p class="step3-highlight font-pixel text-2xl sm:text-3xl md:text-4xl text-black">
+                                Dimusi prova a spiegarlo
+                            </p>
+                            <p class="step3-sub font-mono text-xs sm:text-sm text-red-600 uppercase tracking-widest">
+                                [ Per questo è nato un nuovo linguaggio ]
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- Footer -->
+            <div class="flex justify-between items-end font-clash text-xs text-zinc-400 pt-4 border-t border-black/5 z-10">
+                <p ref="footerLabelRef">01 / 03</p>
+                <p>( SCROLL )</p>
+            </div>
+        </section>
+    </div>
+</template>
+
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { SplitText } from 'gsap/SplitText'
 
-gsap.registerPlugin(ScrollTrigger, SplitText)
+gsap.registerPlugin(ScrollTrigger)
 
-const sectionEl = ref(null)
-const introEl = ref(null)
-const titleTopEl = ref(null)
-const titleBottomEl = ref(null)
-const paragraphEl = ref(null)
-const titleChange1El = ref(null)
-const titleChange2El = ref(null)
-const finalTitleEl = ref(null)
+const sectionRef = ref(null), statusLabelRef = ref(null), footerLabelRef = ref(null), underlineSpanRef = ref(null)
+const step1Ref = ref(null), stepQ1Ref = ref(null), stepQ2Ref = ref(null), step3Ref = ref(null)
+const baseWords = 'Dimusi è uno spazio editoriale e digitale dedicato alla'.split(' ')
+const highlightWords = 'ricerca del divino nella musica contemporanea.'.split(' ')
 
-let splitTop, splitBottom, splitParagraph, splitChange1, splitChange2, splitFinal
-let tl
+let ctx = null
 
-onMounted(async () => {
-    if (document.fonts?.ready) {
-        await document.fonts.ready
-    }
-    
-    // Split di tutti i titoli (incluso quello finale) e del paragrafo
-    splitTop = SplitText.create(titleTopEl.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    splitBottom = SplitText.create(titleBottomEl.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    splitParagraph = SplitText.create(paragraphEl.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    splitChange1 = SplitText.create(titleChange1El.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    splitChange2 = SplitText.create(titleChange2El.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    splitFinal = SplitText.create(finalTitleEl.value, { type: 'lines, words, chars', mask: 'lines', linesClass: 'line', wordsClass: 'word', charsClass: 'char' })
-    
-    // Colore iniziale grigio per tutti i caratteri di tutti i titoli (incluso il finale)
-    gsap.set([...splitTop.chars, ...splitBottom.chars, ...splitChange1.chars, ...splitChange2.chars, ...splitFinal.chars], { color: '#d9d9d9' })
-    
-    // Timeline principale della sezione pinnata
-    tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: sectionEl.value,
-            start: 'top top',
-            end: '+=1400%',
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-            invalidateOnRefresh: true
-        }
-    })
-    
-    // 1. PRIMA FASE: Titolo 1
-    tl.from(splitTop.lines, { yPercent: 120, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.05 })
-    .to(splitTop.chars, { color: '#F2C14E', ease: 'none', stagger: 0.02, duration: 1.5 })
-    
-    // Titolo 2
-    .from(splitBottom.lines, { yPercent: 120, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.05 }, '-=0.5')
-    .to(splitBottom.chars, { color: '#F2C14E', ease: 'none', stagger: 0.02, duration: 1.5 })
-    
-    // Uscita intro 1
-    .to(introEl.value, { opacity: 0, y: -60, duration: 1 }, '+=0.5')
-    
-    // 2. SECONDA FASE: Primo Titolo Intercambiabile + Paragrafo
-    .from(splitChange1.lines, { yPercent: 120, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.05 })
-    .to(splitChange1.chars, { color: '#F2C14E', ease: 'none', stagger: 0.02, duration: 1.5 }, '<')
-    
-    .from(splitParagraph.lines, { yPercent: 120, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.03 }, '<+=0.2')
-    
-    // Uscita primo titolo intercambiabile ed entrata del secondo
-    .to(titleChange1El.value, { opacity: 0, y: -40, duration: 0.8 }, '+=1')
-    .from(splitChange2.lines, { yPercent: 120, opacity: 0, duration: 1, ease: 'power4.out', stagger: 0.05 })
-    .to(splitChange2.chars, { color: '#F2C14E', ease: 'none', stagger: 0.02, duration: 1.5 })
-    
-    // 3. TERZA FASE: Titolo finale (fa uscire il secondo, compare l'ultimo e si colora)
-    .to(titleChange2El.value, { opacity: 0, y: -40, duration: 0.8 }, '+=1')
-    .fromTo(finalTitleEl.value, { opacity: 0, y: 60 }, { opacity: 1, y: 0, duration: 1 }, '<')
-    .to(splitFinal.chars, { color: '#F2C14E', ease: 'none', stagger: 0.02, duration: 1.5 })
+onMounted(() => {
+    ctx = gsap.context(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: sectionRef.value,
+                start: 'top top',
+                end: '+=5200',
+                pin: true,
+                scrub: 0.6,
+                anticipatePin: 1
+            }
+        })
+        
+        // --- 1. MANIFESTO (01 / 03) ---
+        tl.to('.story-word-base', { opacity: 1, stagger: 0.08, ease: 'power1.out' })
+        .to('.story-word-highlight', { opacity: 1, color: '#dc2626', stagger: 0.09, ease: 'power2.out' }, '+=0.04')
+        .to(underlineSpanRef.value, { backgroundSize: '100% 2px', duration: 0.5, ease: 'power2.out' }, '-=0.15')
+        .to({}, { duration: 0.4 })
+        
+        // Transizione -> Domanda 01
+        .to(step1Ref.value, { opacity: 0, y: -20, scale: 0.96, duration: 0.5, ease: 'power2.in' })
+        .add(() => {
+            const isForward = tl.scrollTrigger ? tl.scrollTrigger.direction === 1 : true
+            if (isForward) {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 02 INDAGINE'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '02 / 03'
+            } else {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 01 MANIFESTO'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '01 / 03'
+            }
+        })
+        .set(stepQ1Ref.value, { opacity: 1 })
+        
+        // --- 2. DOMANDA 01 ---
+        .to('.q1-bg-num', { y: 0, opacity: 1, duration: 1, ease: 'power2.out' })
+        .to(['.q1-tag', '.q1-row-1', '.q1-row-2'], {
+            y: '0%',
+            rotateX: 0,
+            stagger: 0.12,
+            duration: 0.9,
+            ease: 'power3.out'
+        }, '-=0.8')
+        .to({}, { duration: 0.8 })
+        
+        // Uscita Domanda 01
+        .to(['.q1-tag', '.q1-row-1', '.q1-row-2'], {
+            y: '-110%',
+            stagger: 0.06,
+            duration: 0.6,
+            ease: 'power3.in'
+        })
+        .to('.q1-bg-num', { opacity: 0, y: -30, duration: 0.4 }, '-=0.4')
+        .set(stepQ1Ref.value, { opacity: 0 })
+        .set(stepQ2Ref.value, { opacity: 1 })
+        
+        // --- 3. DOMANDA 02 ---
+        .to('.q2-bg-num', { y: 0, opacity: 1, duration: 1, ease: 'power2.out' })
+        .to(['.q2-tag', '.q2-row-1', '.q2-row-2'], {
+            y: '0%',
+            rotateX: 0,
+            stagger: 0.12,
+            duration: 0.9,
+            ease: 'power3.out'
+        }, '-=0.8')
+        .to({}, { duration: 0.8 })
+
+        // Uscita Domanda 02 -> Entrata 03 SOLUZIONE
+        .to(['.q2-tag', '.q2-row-1', '.q2-row-2'], {
+            y: '-110%',
+            stagger: 0.06,
+            duration: 0.6,
+            ease: 'power3.in'
+        })
+        .to('.q2-bg-num', { opacity: 0, y: -30, duration: 0.4 }, '-=0.4')
+        .set(stepQ2Ref.value, { opacity: 0 })
+        .add(() => {
+            const isForward = tl.scrollTrigger ? tl.scrollTrigger.direction === 1 : true
+            if (isForward) {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 03 SOLUZIONE'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '03 / 03'
+            } else {
+                if (statusLabelRef.value) statusLabelRef.value.innerText = '// 02 INDAGINE'
+                if (footerLabelRef.value) footerLabelRef.value.innerText = '02 / 03'
+            }
+        })
+        .set(step3Ref.value, { opacity: 1 })
+
+        // --- 4. SOLUZIONE (03 / 03) ---
+        .fromTo('.step3-text', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
+        .fromTo('.step3-highlight', { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+        .fromTo('.step3-sub', { opacity: 0, x: 20 }, { opacity: 1, x: 0, duration: 0.6, ease: 'power2.out' }, '-=0.4')
+        .to({}, { duration: 1 })
+        
+    }, sectionRef.value)
 })
 
-onBeforeUnmount(() => {
-    splitTop?.revert()
-    splitBottom?.revert()
-    splitParagraph?.revert()
-    splitChange1?.revert()
-    splitChange2?.revert()
-    splitFinal?.revert()
-    tl?.kill()
-    ScrollTrigger.getAll().forEach(st => st.kill())
+onUnmounted(() => {
+    if (ctx) ctx.revert()
 })
 </script>
-
-<template>
-    <section ref="sectionEl" class="relative w-full h-screen bg-black text-white overflow-hidden px-6 md:px-16 py-16 flex flex-col justify-between">
-        <!-- PRIMA FASE -->
-        <div ref="introEl" class="absolute inset-0 px-6 md:px-16 py-16 flex flex-col justify-between pointer-events-none">
-            <h2 ref="titleTopEl" class="font-clash uppercase font-bold leading-[0.95] text-[clamp(2rem,6.5vw,7rem)] pointer-events-auto">
-                Può l'anima resistere senza musica?
-            </h2>
-            <h2 ref="titleBottomEl" class="text-right font-clash uppercase font-bold leading-[0.95] text-[clamp(2rem,6.5vw,7rem)] pointer-events-auto">
-                Cosa trasmette la musica all'anima?
-            </h2>
-        </div>
-        
-        <!-- SECONDA FASE -->
-        <div class="absolute inset-0 px-6 md:px-16 py-16 flex flex-col justify-between pointer-events-none">
-            
-            <!-- Paragrafo in alto -->
-            <div class="w-full flex justify-end pointer-events-auto">
-                <div ref="paragraphEl" class="w-full md:w-1/2 text-lg md:text-xl leading-relaxed text-[#d9d9d9] pl-0 md:pl-12">
-                    Questa rivista non recensisce dischi. Non stila classifiche, non insegue le uscite della settimana. Prova a fare qualcosa di più scomodo: guardare cosa succede nel corpo e nella testa di chi ascolta quando la musica smette di essere sfondo e diventa esperienza. Dimusi nasce da li. Non da un metodo, da un'ossessione. Dalla domanda che mi faccio da anni ogni volta che una canzone mi colpisce più del previsto: perché proprio questa, perché proprio ora, cosa sta succedendo davvero mentre ascolto. Cosa succede nel momento esatto in cui la forma non basta più a contenere quello che stiamo provando?
-                </div>
-            </div>
-            
-            <!-- Titoli intercambiabili e finale nello stesso blocco in basso -->
-            <div class="relative w-full max-w-6xl h-auto pointer-events-auto">
-                <h2 ref="titleChange1El" class="absolute bottom-0 left-0 font-clash uppercase font-bold leading-[0.95] text-[clamp(2rem,6.5vw,7rem)]">
-                    Dimusi prova a spiegarlo
-                </h2>
-                <h2 ref="titleChange2El" class="absolute bottom-0 left-0 font-clash uppercase font-bold leading-[0.95] text-[clamp(2rem,6.5vw,7rem)]">
-                    Ma non è facile spiegarlo
-                </h2>
-                <h2 ref="finalTitleEl" class="absolute bottom-0 left-0 max-w-6xl opacity-0 font-clash uppercase font-bold leading-[0.95] text-[clamp(2rem,6.5vw,7rem)] pointer-events-none">
-                    Per questo è nato un nuovo linguaggio:
-                </h2>
-            </div>
-            
-        </div>
-    </section>    
-</template>

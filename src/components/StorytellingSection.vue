@@ -1,6 +1,6 @@
 <template>
     <div class="relative w-full">
-        <section ref="sectionRef" class="relative w-full min-h-screen bg-transparent flex flex-col justify-between p-6 md:p-12 lg:p-16 z-20 select-none overflow-hidden">
+        <section ref="sectionRef" class="relative w-full min-h-screen bg-white flex flex-col justify-between p-6 md:p-12 lg:p-16 z-20 select-none overflow-hidden">
             <!-- Didascalia Superiore Fissa -->
             <div class="flex items-center justify-between font-clash text-xs uppercase tracking-widest text-zinc-500 border-b border-black/10 pb-4 z-10">
                 <p class="flex items-center gap-3">
