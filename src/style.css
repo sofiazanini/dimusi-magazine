@@ -68,17 +68,6 @@
 
 
 /* testi colorati animati */
-.line-draw-black {
-  background-image: linear-gradient(to right, #000000, #000000);
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  background-size: 0% 2px;
-  padding-bottom: 2px;
-  display: inline;
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-}
-
 .marker-highlight {
   background-image: linear-gradient(to right, #7E968D 50%, transparent 50%);
   background-size: 200% 100%;
@@ -95,4 +84,7 @@
 }
 .marker-highlight.marker-orange {
   background-image: linear-gradient(to right, #F59B45 50%, transparent 50%);
+}
+.marker-highlight.marker-red {
+  background-image: linear-gradient(to right, #BD252C 50%, transparent 50%);
 }

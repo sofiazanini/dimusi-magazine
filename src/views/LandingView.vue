@@ -45,6 +45,7 @@
 
   <StorytellingSection />
   <GlossarioSection />
+  <VisionSection />
 
 </template>
 
@@ -55,6 +56,7 @@ import landingVideo from '../assets/landing-video-effects.mp4'
 import Navbar from '../components/Navbar.vue'
 import StorytellingSection from '../components/StorytellingSection.vue'
 import GlossarioSection from '../components/GlossarioSection.vue'
+import VisionSection from '../components/VisionSection.vue'
 
 const clipProgress = ref(0)
 const imgScale = ref(1)

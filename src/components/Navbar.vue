@@ -1,8 +1,8 @@
 <template>
   <!-- navbar (mobile e desktop) -->
-  <header class="fixed z-50 transition-all duration-300 ease-out bottom-6 left-1/2 -translate-x-1/2 md:bottom-auto md:top-6 md:left-auto md:translate-x-0 md:right-15"
+  <header class="fixed z-50 transition-all duration-300 ease-out bottom-6 left-1/2 -translate-x-1/2 md:bottom-auto md:top-8 md:left-auto md:translate-x-0 md:right-15"
   :class="[isHeaderVisible
-  ? 'opacity-100 translate-y-0 pointer-events-auto' 
+  ? 'opacity-100 translate-y-3 pointer-events-auto' 
   : (isMobile ? 'opacity-0 translate-y-6 pointer-events-none' : 'opacity-0 -translate-y-4 pointer-events-none')]">
   
     <div class="relative">
@@ -39,12 +39,9 @@
       </div>
 
       <!-- pulsante trigger -->
-      <button 
-      type="button"
-      @click="toggleMenu" 
-      class="group pointer-events-auto flex items-center gap-2.5 px-4.5 py-2.5 bg-zinc-950 text-white hover:bg-zinc-800 transition-all duration-200 cursor-pointer focus:outline-hidden select-none border border-white/15 shadow-xl rounded-full"
-      aria-label="Toggle Menu"
-      >
+      <button type="button" @click="toggleMenu" 
+      class="group pointer-events-auto flex items-center gap-2.5 px-4.5 py-2.5 bg-zinc-800 text-white hover:bg-zinc-950 transition-all duration-200 cursor-pointer focus:outline-hidden select-none border border-white/15 shadow-xl rounded-full"
+      aria-label="Toggle Menu">
       <span class="font-pixel text-xs md:text-[11px] tracking-widest text-zinc-300 group-hover:text-white transition-colors duration-150 uppercase">
         {{ isOpen ? 'CLOSE' : 'MENU' }}
       </span>
