@@ -20,7 +20,7 @@
                 <!-- testo (parola, spelling, grammatica, descrizione, esempio)-->
                 <div class="w-full max-w-4xl space-y-8 md:space-y-10 relative z-10">
                     <div class="slide-content-item space-y-2">
-                        <h2 class="font-pixel text-7xl md:text-9xl text-zinc-950 leading-none tracking-tight">
+                        <h2 class="font-pixel text-6xl md:text-9xl text-zinc-950 leading-none tracking-tight">
                             {{ term.word }}
                         </h2>
                         <p class="font-space text-2xl md:text-3xl text-zinc-800 tracking-wider pt-1 md:font-light">

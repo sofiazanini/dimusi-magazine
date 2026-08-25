@@ -49,6 +49,10 @@
   background-color: #7E968D;
 }
 
+.border-green-mag {
+  border-color: #7E968D;
+}
+
 .text-red-mag {
   color: #BD252C;
 }
@@ -57,6 +61,9 @@
   background-color: #BD252C;
 }
 
+.border-red-mag {
+  border-color: #BD252C;
+}
 
 
 
@@ -78,7 +85,7 @@
   background-position: 100% 0%;
   padding: 0.1em 0.35em;
   border-radius: 0.125rem;
-  transition: color 0.3s ease;
+  transition: color 0.4s ease;
   display: inline;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
@@ -89,6 +96,3 @@
 .marker-highlight.marker-orange {
   background-image: linear-gradient(to right, #F59B45 50%, transparent 50%);
 }
-
-
-
