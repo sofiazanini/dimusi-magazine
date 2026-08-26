@@ -8,7 +8,7 @@
     <div class="relative">
       
       <!-- menu a comparsa -->
-      <div ref="dropdownRef" v-show="isOpen" class="absolute z-50 bg-[#E5EBE8] border border-black/10 shadow-2xl overflow-hidden select-none rounded-2xl w-[70vw] max-w-sm left-1/2 -translate-x-1/2 bottom-full mb-3 md:bottom-auto md:top-full md:mt-3 md:w-72 md:left-auto md:translate-x-0 md:right-0">
+      <div ref="dropdownRef" v-show="isOpen" class="absolute z-50 bg-zinc-50 border border-black/10 shadow-2xl overflow-hidden select-none rounded-2xl w-[70vw] max-w-sm left-1/2 -translate-x-1/2 bottom-full mb-3 md:bottom-auto md:top-full md:mt-3 md:w-72 md:left-auto md:translate-x-0 md:right-0">
         
         <!-- texture noise -->
         <div class="absolute inset-0 pointer-events-none z-10 opacity-40 mix-blend-multiply rounded-2xl" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIj48ZmlsdGVyIGlkPSJuIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC44NSIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNuKSIgb3BhY2l0eT0iMSIvPjwvc3ZnPg=='); background-repeat: repeat;"></div>
