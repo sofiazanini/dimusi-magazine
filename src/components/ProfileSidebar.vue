@@ -1,7 +1,7 @@
 <template>
   <div class="w-full md:w-88 lg:w-90 shrink-0 select-none">
     <!-- menu chiuso mobile -->
-    <header @click="apertoMobile = !apertoMobile" class="md:hidden fixed top-3 inset-x-4 z-40 flex items-center justify-between bg-zinc-50 border border-black/20 rounded-2xl p-3 shadow-xl backdrop-blur-md bg-zinc-50/95">
+    <header @click="apertoMobile = !apertoMobile" class="md:hidden fixed top-3 inset-x-4 z-40 flex items-center justify-between bg-zinc-50 border border-black/20 rounded-2xl p-3 shadow-xl backdrop-blur-md">
       <div class="flex items-center gap-2.5 min-w-0">
         <img :src="datiProfilo.avatar" :alt="datiProfilo.nome" class="w-10 h-10 rounded-md object-cover border border-black/70 shrink-0" />
         <div class="min-w-0">
