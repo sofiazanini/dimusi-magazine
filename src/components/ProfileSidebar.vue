@@ -37,7 +37,6 @@
           <div class="flex gap-1.5">
             <h2 class="font-pixel text-lg md:text-2xl text-zinc-950 leading-tight">{{ datiProfilo.nome }}</h2>
           </div>
-          <p class="font-clash text-sm md:text-lg text-zinc-400">{{ datiProfilo.username }}</p>
         </div>
       </div>
       <!-- info -->
