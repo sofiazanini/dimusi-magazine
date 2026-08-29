@@ -31,9 +31,9 @@ Il **Volume 1 — "Dove il velo si lacera"** esplora il contrasto apollineo/dion
 ## Struttura del sito
 
 ```
-/                 Landing — hero, manifesto, glossario a schermo intero, "Più grande"
+/                 Landing — hero, manifesto, glossario
+/glossario        Glossario dei termini utilizzati nel Magazine
 /magazine         Archivio dei volumi cartacei
-/magazine/vol-01  Dettaglio Volume 1, con sblocco contenuti via codice QR
 /social           Profilo Rituale — diario personale delle zidrise, Affinità Elettive
 ```
 
