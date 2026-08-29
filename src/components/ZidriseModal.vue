@@ -127,7 +127,6 @@
 
 <script setup>
 import { reactive, ref, watch } from 'vue'
-import { cercaBraniSpotify } from '../services/spotifyService.js'
 
 const props = defineProps({
   datiIniziali: { type: Object, default: () => ({}) },
@@ -175,12 +174,24 @@ const gestisciInputRicerca = () => {
     mostraTendina.value = false
     return
   }
-  
+
   timerRicerca = setTimeout(async () => {
     staCercando.value = true
-    const risultati = await cercaBraniSpotify(modulo.titolo.trim(), 5)
-    suggerimenti.value = risultati
-    mostraTendina.value = risultati.length > 0
+    try {
+      const risposta = await fetch(`/api/spotify/search?q=${encodeURIComponent(modulo.titolo.trim())}`)
+      const dati = await risposta.json()
+      // mappiamo i campi dell'endpoint (title, artist, cover...) su quelli usati dal form (titolo, artista, cover...)
+      suggerimenti.value = (dati.tracks || []).map(t => ({
+        id: t.id,
+        titolo: t.title,
+        artista: t.artist,
+        cover: t.cover
+      }))
+    } catch (errore) {
+      console.error('Errore ricerca Spotify:', errore)
+      suggerimenti.value = []
+    }
+    mostraTendina.value = suggerimenti.value.length > 0
     staCercando.value = false
   }, 250)
 }
