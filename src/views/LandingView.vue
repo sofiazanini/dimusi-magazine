@@ -4,33 +4,24 @@
     <Navbar />
       
     <!-- Logo Grande Full Width su Mobile -->
-    <div 
-      id="title-mobile" 
-      class="w-full flex flex-col items-start z-20 transition-all duration-1000 ease-in-out"
-      :class="isIntroDone ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-25'"
-    >
+    <div id="title-mobile" class="w-full flex flex-col items-start z-20 transition-all duration-1000 ease-in-out"
+     :class="isIntroDone ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-25'">
       <img src="/logo-dimusi.svg" alt="Dimusi Magazine" class="w-full sm:w-80 md:w-md object-contain object-left"/>
       <p class="text-sm md:text-lg text-zinc-900 mt-2 font-pixel">Il magazine di musica e cultura</p>
     </div>
     
     <div class="w-full"></div>
     
-    <div 
-      id="header-intro" 
-      class="w-full p-4 md:p-5 box-border top-0 left-0 overflow-hidden transition-all duration-500"
-      :class="isIntroDone ? 'absolute z-10 h-svh' : 'fixed z-10 h-dvh'"
-    >
-      <div 
-        id="header-intro-photo-normal" 
-        class="relative w-full h-full z-20 flex box-border will-change-auto transition-all duration-1000 ease-out"
-        :style="{ clipPath: currentClipPath }"
-      >
+    <div id="header-intro" class="w-full p-4 md:p-5 box-border top-0 left-0 overflow-hidden transition-all duration-500"
+      :class="isIntroDone ? 'absolute z-10 h-svh' : 'fixed z-10 h-dvh'">
+      <div id="header-intro-photo-normal" class="relative w-full h-full z-20 flex box-border will-change-auto transition-all duration-1000 ease-out"
+        :style="{ clipPath: currentClipPath }">
         <video 
           :src="landingVideo" 
           autoplay 
           muted 
           loop 
-          playsinline 
+          playsinline
           class="w-full h-full object-cover transition-opacity duration-500" 
           :style="{ transform: `scale(${imgScale})` }"
         ></video>

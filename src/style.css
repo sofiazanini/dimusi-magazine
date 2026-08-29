@@ -88,3 +88,12 @@
 .marker-highlight.marker-red {
   background-image: linear-gradient(to right, #BD252C 50%, transparent 50%);
 }
+
+
+.hover\:bg-red-mag:hover {
+  background-color: #BD252C;
+}
+
+.hover\:text-white:hover {
+  color: #ffffff;
+}
