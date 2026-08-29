@@ -178,7 +178,7 @@ const gestisciInputRicerca = () => {
   timerRicerca = setTimeout(async () => {
     staCercando.value = true
     try {
-      const risposta = await fetch(`/api/spotify/search?q=${encodeURIComponent(modulo.titolo.trim())}`)
+      const risposta = await fetch(`/api/spotify?q=${encodeURIComponent(modulo.titolo.trim())}`)
       const dati = await risposta.json()
       // mappiamo i campi dell'endpoint (title, artist, cover...) su quelli usati dal form (titolo, artista, cover...)
       suggerimenti.value = (dati.tracks || []).map(t => ({
