@@ -76,7 +76,7 @@
             <p class="font-clash text-sm text-zinc-800">Ascolta la selezione di tracce analizzate nel numero.</p>
           </div>
           
-          <a href="https://spotify.com" target="_blank" rel="noopener noreferrer"
+          <a href="https://open.spotify.com/playlist/1MJIwNwj8vybaHPgojPWEq?si=fbd40375b6844632" target="_blank" rel="noopener noreferrer"
             class="w-fit self-start sm:self-auto inline-flex items-center gap-2 px-5 py-2.5 bg-zinc-950 text-white font-pixel text-xs tracking-widest uppercase rounded-full hover:bg-zinc-800 transition-colors shrink-0 shadow-sm">PLAYLIST UFFICIALE ↗
           </a>
         </div>
