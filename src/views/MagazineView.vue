@@ -18,7 +18,7 @@
         <router-link to="/magazine/vol-01" class="group flex flex-col space-y-3 no-underline text-zinc-950 cursor-pointer w-full">
           <div class="relative w-full aspect-3/4 rounded-2xl overflow-hidden shadow-xl bg-zinc-900 border border-black/10 transition-transform duration-500 ease-out group-hover:scale-105 group-hover:-rotate-1">
             <img :src="coverVol1" alt="Dimusi Vol. 01 - Dove il velo si lacera" class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"/>
-            <div class="absolute bottom-3 right-3 bg-zinc-950 text-white font-pixel text-xs tracking-widest px-3 py-1 rounded-full uppercase shadow-md">
+            <div class="absolute bottom-3 right-3 bg-red-mag text-white font-pixel text-xs tracking-widest px-3 py-1 rounded-full uppercase shadow-md">
               DISPONIBILE
             </div>
           </div>
